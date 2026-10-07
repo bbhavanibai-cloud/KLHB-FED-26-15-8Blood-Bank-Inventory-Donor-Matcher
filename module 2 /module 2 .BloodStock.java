@@ -12,5 +12,6 @@ System.out.println("Blood Stock Details");
 System.out.println("Blood Group: " + blood);
 System.out.println("Available Units: " + units);
 sc.close();
+
 }
 }
