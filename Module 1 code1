@@ -1,0 +1,25 @@
+import java.util.Scanner;//CO1
+public class DonorRegistrationModule1 {//CO1
+public static void main(String[] args) {//CO1
+Scanner sc = new Scanner(System.in);//CO1
+System.out.println("Blood Bank Donor Registration");//CO1
+System.out.print("Enter donor id: ");//CO1
+int id = sc.nextInt();//CO1
+System.out.print("Enter donor name: ");//CO1
+String name = sc.next();//CO1
+System.out.print("Enter age: ");//CO1
+int age = sc.nextInt();//CO1
+System.out.print("Enter blood group: ");//CO1
+String blood = sc.next();//CO1
+System.out.print("Enter phone number: ");//CO1
+long phone = sc.nextLong();//CO1
+System.out.println();//CO1
+System.out.println("Donor Details");//CO1
+System.out.println("Id: " + id);//CO1
+System.out.println("Name: " + name);//CO1
+System.out.println("Age: " + age);//CO1
+System.out.println("Blood Group: " + blood);//CO1
+System.out.println("Phone: " + phone);//CO1
+sc.close();//CO1
+}
+}
