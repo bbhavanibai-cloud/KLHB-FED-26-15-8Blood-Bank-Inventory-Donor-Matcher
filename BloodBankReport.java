@@ -1,31 +1,76 @@
-
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
 
 public class BloodBankReport {
 public static void main(String[] args) {
 Scanner sc = new Scanner(System.in);
 
-System.out.println("Blood Bank Report");
+String[] groups = {"A+", "B+", "O+", "AB+"};
+int[] units = new int[4];
 
-System.out.print("Enter A+ blood units: ");
-int a = sc.nextInt();
+try {
+for (int i = 0; i < groups.length; i++) {
+System.out.print("Enter " + groups[i] + " blood units: ");
+units[i] = sc.nextInt();
+}
 
-System.out.print("Enter B+ blood units: ");
-int b = sc.nextInt();
+System.out.print("Enter blood group to search: ");
+sc.nextLine();
+String search = sc.nextLine();
 
-System.out.print("Enter O+ blood units: ");
-int o = sc.nextInt();
+boolean found = false;
 
-System.out.print("Enter AB+ blood units: ");
-int ab = sc.nextInt();
+for (int i = 0; i < groups.length; i++) {
+if (groups[i].equalsIgnoreCase(search)) {
+System.out.println("Blood Group: " + groups[i]);
+System.out.println("Available Units: " + units[i]);
+found = true;
+break;
+}
+}
 
-int total = a + b + o + ab;
+if (!found) {
+System.out.println("Blood group not found");
+}
 
-System.out.println("A+ Units: " + a);
-System.out.println("B+ Units: " + b);
-System.out.println("O+ Units: " + o);
-System.out.println("AB+ Units: " + ab);
+Arrays.sort(groups);
+
+FileWriter fw = new FileWriter("BloodBankReport.txt");
+
+fw.write("Blood Bank Report\n");
+
+int total = 0;
+
+for (int i = 0; i < groups.length; i++) {
+int index = -1;
+
+for (int j = 0; j < 4; j++) {
+if (groups[i].equals(
+j == 0 ? "A+" :
+j == 1 ? "B+" :
+j == 2 ? "O+" : "AB+")) {
+index = j;
+}
+}
+
+fw.write(groups[i] + "\n");
+}
+
+for (int i = 0; i < units.length; i++) {
+total = total + units[i];
+}
+
+fw.write("Total Blood Units: " + total + "\n");
+fw.close();
+
+System.out.println("Report saved successfully");
 System.out.println("Total Blood Units: " + total);
+
+} catch (IOException e) {
+System.out.println("File error: " + e.getMessage());
+}
 
 sc.close();
 }
